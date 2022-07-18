@@ -1,53 +1,30 @@
-# No Code
+# Traffic
 
-No code is the best way to write secure and reliable applications. Write nothing; deploy nowhere.
+Traffic Signal classifier is an Artificial Intelligence model that can detect the traffic signals from the boards.
 
 ## Getting Started
 
-Start by not writing any code.
-
+```
+pip install -r requirements.txt
 ```
 
-```
-
-This is just an example application, but imagine it doing anything you want. Adding new features is easy too:
+Running the Program!
 
 ```
-
+python traffic.py
 ```
 
-The possibilities are endless.
+Boom! you got it working!
 
-### Building the Application
+### Problems
 
-Now that you have not done anything it's time to build your application:
-
-```
-
-```
-
-Yep. That's it. You should see the following output:
+In `load_data` function i wasn't able to read the image, I tried `os.read`, and after sometime with `mode='rb'` i got the same error.
+then after a lot of search, i found that the image is in the form of a `numpy array` and i tried to read it using `cv2.imread` and finally it worked!
+then slowly I created that function and it worked!
+In `get_model` function, I was using gtsrb-small model from the start because I thought it would be easier to train. but then as I did it I didn't know where the error was comming from because I did everything right, applied a lot of filters, pooling, but still got a error with this name:
 
 ```
-
+ValueError: Shapes (None, 3) and (None, 43) are incompatible
 ```
 
-### Deploying
-
-While you still have not done anything it's time to deploy your application. By running the following command you can deploy your application absolutely nowhere.
-
-```
-
-```
-
-It's that simple. And when it comes time to scale the application, all you have to do is:
-
-```
-
-```
-
-I know right?
-
-## Contributing
-
-You don't.
+but then after a lot of time i found that the error was because of the shape of the image and the model. so i changed the model to the gtsrb model and it worked!
